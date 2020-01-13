@@ -1,1 +1,4 @@
-build/
+bazel-bankingapp
+bazel-bin
+bazel-out
+bazel-testlogs
