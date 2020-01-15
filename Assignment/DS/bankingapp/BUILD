@@ -23,14 +23,30 @@ cpp_grpc_library(
 cc_binary(
     name = "hello_server",
     srcs = ["greeter_server.cc"],
-    copts = [],
-    deps = [":greeter_cpp_grpc"],
+    copts = ["-Wl,-rpath,/usr/local/lib"],
+    linkopts = [
+        "-lmongocxx",
+        "-lbsoncxx",
+    ],
+    deps = [
+        ":greeter_cpp_grpc",
+        "@bsoncxx",
+        "@mongocxx",
+    ],
 )
 
 # https://docs.bazel.build/versions/master/be/c-cpp.html#cc_binary
 cc_binary(
     name = "hello_client",
     srcs = ["greeter_client.cc"],
-    copts = [],
-    deps = [":greeter_cpp_grpc"],
+    copts = ["-Wl,-rpath,/usr/local/lib"],
+    linkopts = [
+        "-lmongocxx",
+        "-lbsoncxx",
+    ],
+    deps = [
+        ":greeter_cpp_grpc",
+        "@bsoncxx",
+        "@mongocxx",
+    ],
 )

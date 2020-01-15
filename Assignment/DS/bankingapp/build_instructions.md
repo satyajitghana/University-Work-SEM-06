@@ -19,4 +19,14 @@ sudo make EP_mnmlstc_core
 make && sudo make install
 ```
 
+## configuring mongodb
+```
+mkdir /data/db
+sudo chmod -R go+w /data/db
+sudo service mongogb restart
+sudo apt install mongodb mongodb-server
+```
+
+For building the mongo test use this ``c++ --std=c++11 test.cpp $(pkg-config --cflags --libs libmongocxx) -Wl,-rpath,/usr/local/lib``
+
 > all the best 😂😂

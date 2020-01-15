@@ -25,3 +25,20 @@ rules_proto_grpc_cpp_repos()
 load("@com_github_grpc_grpc//bazel:grpc_deps.bzl", "grpc_deps")
 
 grpc_deps()
+
+# mongo and bson libraries
+
+# new_local_repository is used to create a local non bazel repository, so you can use the .so
+# files generated in that folder and add it as a dependency to your build
+
+new_local_repository(
+    name = "bsoncxx",
+    build_file = "gsoncxx.BUILD",
+    path = "/usr/local",
+)
+
+new_local_repository(
+    name = "mongocxx",
+    build_file = "mongocxx.BUILD",
+    path = "/usr/local",
+)
