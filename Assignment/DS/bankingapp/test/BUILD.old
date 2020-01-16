@@ -4,46 +4,48 @@ load("@rules_proto_grpc//cpp:defs.bzl", "cpp_grpc_library")
 
 # native proto_library rule
 proto_library(
-    name = "zirconiumbank",
-    srcs = ["zirconiumbank.proto"],
+    name = "helloworld",
+    srcs = ["helloworld.proto"],
     deps = ["@com_google_protobuf//:any_proto"],
 )
 
-# create the grpc library that our server and client can depend on
-cpp_grpc_library(
-    name = "zirconium_cpp_grpc",
-    deps = [":zirconiumbank"],
+cpp_proto_compile(
+    name = "cpp_helloworld_proto",
+    deps = [":helloworld"],
 )
 
-# binary rule to create the server executable
-# depends on the grpc-proto library we made above
+# compile server and client
+cpp_grpc_library(
+    name = "greeter_cpp_grpc",
+    deps = [":helloworld"],
+)
+
 cc_binary(
-    name = "zirconium_server",
-    srcs = ["zirconium_server.cc"],
+    name = "hello_server",
+    srcs = ["greeter_server.cc"],
     copts = ["-Wl,-rpath,/usr/local/lib"],
     linkopts = [
         "-lmongocxx",
         "-lbsoncxx",
     ],
     deps = [
-        ":zirconium_cpp_grpc",
+        ":greeter_cpp_grpc",
         "@bsoncxx",
         "@mongocxx",
     ],
 )
 
-# binary rule to create the clien exeecutable
-# depends on the grpc-proto library we made
+# https://docs.bazel.build/versions/master/be/c-cpp.html#cc_binary
 cc_binary(
-    name = "zirconium_client",
-    srcs = ["zirconium_client.cc"],
+    name = "hello_client",
+    srcs = ["greeter_client.cc"],
     copts = ["-Wl,-rpath,/usr/local/lib"],
     linkopts = [
         "-lmongocxx",
         "-lbsoncxx",
     ],
     deps = [
-        ":zirconium_cpp_grpc",
+        ":greeter_cpp_grpc",
         "@bsoncxx",
         "@mongocxx",
     ],
