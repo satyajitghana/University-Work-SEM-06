@@ -29,4 +29,8 @@ sudo apt install mongodb mongodb-server
 
 For building the mongo test use this ``c++ --std=c++11 test.cpp $(pkg-config --cflags --libs libmongocxx) -Wl,-rpath,/usr/local/lib``
 
+You can run using
+``bazel run //:zirconium_client -- -h```
+the  ``--`` separated the program args from bazel args
+
 > all the best 😂😂

@@ -15,6 +15,23 @@ cpp_grpc_library(
     deps = [":zirconiumbank"],
 )
 
+# cxxopts library
+# https://docs.bazel.build/versions/master/be/c-cpp.html#cc_library
+cc_library(
+    name = "cxxopts",
+    srcs = ["cxxopts.hpp"],
+    hdrs = ["cxxopts.hpp"],
+    visibility = ["//visibility:public"],
+)
+
+# loguru loggin library
+cc_library(
+    name = "loguru",
+    srcs = ["loguru.cpp"],
+    hdrs = ["loguru.hpp"],
+    visibility = ["//visibility:public"],
+)
+
 # binary rule to create the server executable
 # depends on the grpc-proto library we made above
 cc_binary(
@@ -24,8 +41,11 @@ cc_binary(
     linkopts = [
         "-lmongocxx",
         "-lbsoncxx",
+        "-ldl",
     ],
     deps = [
+        ":cxxopts",
+        ":loguru",
         ":zirconium_cpp_grpc",
         "@bsoncxx",
         "@mongocxx",
@@ -37,12 +57,18 @@ cc_binary(
 cc_binary(
     name = "zirconium_client",
     srcs = ["zirconium_client.cc"],
-    copts = ["-Wl,-rpath,/usr/local/lib"],
+    copts = [
+        "-Wl,-rpath,/usr/local/lib",
+    ],
     linkopts = [
         "-lmongocxx",
         "-lbsoncxx",
+        "-ldl",
+        "-std=c++17",
     ],
     deps = [
+        ":cxxopts",
+        ":loguru",
         ":zirconium_cpp_grpc",
         "@bsoncxx",
         "@mongocxx",
