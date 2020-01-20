@@ -1,0 +1,1 @@
+/usr/bin/g++-9  -g  -rdynamic CMakeFiles/HelloWorld.dir/main.cpp.o  -o HelloWorld -lGL -lGLU -lglut 
