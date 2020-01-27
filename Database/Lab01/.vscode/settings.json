@@ -1,0 +1,13 @@
+{
+    "sqltools.connections": [
+        {
+            "database": "students",
+            "dialect": "MySQL",
+            "name": "localhost",
+            "password": "redosmiumtetroxide",
+            "port": 3306,
+            "server": "localhost",
+            "username": "shadowleaf"
+        }
+    ]
+}

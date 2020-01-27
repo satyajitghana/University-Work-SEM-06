@@ -16,7 +16,7 @@ sudo apt update
 sudo apt install libglu1-mesa-dev freeglut3-dev mesa-common-dev
 ```
 
-CMakeLists.txt
+To compile using cmake modify ``CMakeLists.txt`` as
 
 ```
 find_package(OpenGL REQUIRED)
@@ -24,4 +24,10 @@ find_package(GLUT REQUIRED)
 include_directories(${OPENGL_INCLUDE_DIRS}  ${GLUT_INCLUDE_DIRS})
 
 target_link_libraries(HelloWorld ${OPENGL_LIBRARIES} ${GLUT_LIBRARY} )
+```
+
+To Compile using GCC add ``-lglut``
+
+```
+g++ triangle.cc -lglut -o triangle
 ```
