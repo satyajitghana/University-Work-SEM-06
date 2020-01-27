@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/mnt/d/University-Work/University-Work-SEM-06/Compilers/Lab01/build",
+  "command": "/usr/bin/g++-9   -I/mnt/d/University-Work/University-Work-SEM-06/Compilers/Lab01/build  -g   -o CMakeFiles/Lab01.dir/main.cpp.o -c /mnt/d/University-Work/University-Work-SEM-06/Compilers/Lab01/main.cpp",
+  "file": "/mnt/d/University-Work/University-Work-SEM-06/Compilers/Lab01/main.cpp"
+},
+{
+  "directory": "/mnt/d/University-Work/University-Work-SEM-06/Compilers/Lab01/build",
+  "command": "/usr/bin/g++-9   -I/mnt/d/University-Work/University-Work-SEM-06/Compilers/Lab01/build  -g   -o CMakeFiles/Lab01.dir/tokens.cpp.o -c /mnt/d/University-Work/University-Work-SEM-06/Compilers/Lab01/build/tokens.cpp",
+  "file": "/mnt/d/University-Work/University-Work-SEM-06/Compilers/Lab01/build/tokens.cpp"
+}
+]
