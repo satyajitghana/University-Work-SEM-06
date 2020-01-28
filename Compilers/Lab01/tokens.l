@@ -12,11 +12,9 @@ void yyerror(const char *s);
 
 %%
 
-[aeiouAEIOU]            { std::cout << "[VOWEL]"; vowel_cnt++; } 
-[a-zA-Z]                { std::cout << "[CONSONANT]"; consonant_cnt++; }
-\n                      { /*std::cout << "[NEWLINE]\n"; */
-                        std::cout << "\nFound " << vowel_cnt << " Vowels and " << consonant_cnt << " Consonants"
-                        << "\n"; vowel_cnt = 0; consonant_cnt = 0; }
-.                       { std::cout << "[UNRECOGNIZED]"; }
+[aeiouAEIOU]            { std::cout << "[VOWEL: " << yytext << "]"; vowel_cnt++; } 
+[a-zA-Z]                { std::cout << "[CONSONANT: " << yytext << "]"; consonant_cnt++; }
+\n                      { std::cout << "\nEND PARSE [NEWLINE]\n\n"; return 1; }
+.                       { std::cout << "[UNRECOGNIZED: "<< yytext << " ]"; }
 
 %%

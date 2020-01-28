@@ -730,32 +730,30 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 YY_RULE_SETUP
 #line 15 "tokens.l"
-{ std::cout << "[VOWEL]"; vowel_cnt++; } 
+{ std::cout << "[VOWEL: " << yytext << "]"; vowel_cnt++; } 
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
 #line 16 "tokens.l"
-{ std::cout << "[CONSONANT]"; consonant_cnt++; }
+{ std::cout << "[CONSONANT: " << yytext << "]"; consonant_cnt++; }
 	YY_BREAK
 case 3:
 /* rule 3 can match eol */
 YY_RULE_SETUP
 #line 17 "tokens.l"
-{ /*std::cout << "[NEWLINE]\n"; */    std::cout << "Found " << vowel_cnt << " Vowels and " << consonant_cnt << " Consonants"
-
-              << "\n"; }
+{ std::cout << "\nEND PARSE [NEWLINE]\n\n"; return 1; }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 20 "tokens.l"
-{ std::cout << "[UNRECOGNIZED]"; }
+#line 18 "tokens.l"
+{ std::cout << "[UNRECOGNIZED: "<< yytext << " ]"; }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 22 "tokens.l"
+#line 20 "tokens.l"
 ECHO;
 	YY_BREAK
-#line 759 "/mnt/d/University-Work/University-Work-SEM-06/Compilers/Lab01/build/tokens.cpp"
+#line 757 "/mnt/d/University-Work/University-Work-SEM-06/Compilers/Lab01/build/tokens.cpp"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1760,5 +1758,5 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 22 "tokens.l"
+#line 20 "tokens.l"
 
