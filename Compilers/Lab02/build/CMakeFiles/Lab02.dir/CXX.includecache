@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/mnt/data/University-Work-SEM-06/Compilers/Lab02/build/tokens.cpp
+stdio.h
+-
+string.h
+-
+errno.h
+-
+stdlib.h
+-
+inttypes.h
+-
+iostream
+-
+unistd.h
+-
+
+/mnt/data/University-Work-SEM-06/Compilers/Lab02/main.cpp
+iostream
+-
+string
+-
+
