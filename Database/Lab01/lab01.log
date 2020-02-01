@@ -1,0 +1,182 @@
+This is XeTeX, Version 3.14159265-2.6-0.99999 (TeX Live 2018/W32TeX) (preloaded format=xelatex 2018.6.17)  1 FEB 2020 14:19
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**lab01.ipynb
+(./lab01.ipynb
+LaTeX2e <2018-04-01> patch level 2
+Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
+
+! LaTeX Error: Missing \begin{document}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.2  "
+      cells": [
+? ⴈⴈⴈⴈⴈ
+Type <return> to proceed, S to scroll future error messages,
+R to run without stopping, Q to run quietly,
+I to insert something, E to edit your file,
+1 or ... or 9 to ignore the next 1 to 9 tokens of input,
+H for help, X to quit.
+? 
+! Interruption.
+\GenericError  ...                                
+                                                  \endgroup 
+l.2  "
+      cells": [
+? 
+Missing character: There is no " in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no s in font nullfont!
+Missing character: There is no " in font nullfont!
+Missing character: There is no : in font nullfont!
+Missing character: There is no [ in font nullfont!
+Missing character: There is no " in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no e in font nullfont!
+Missing character: There is no l in font nullfont!
+Missing character: There is no l in font nullfont!
+! Missing $ inserted.
+<inserted text> 
+                $
+l.4    "cell_
+             type": "code",
+? 
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 4.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 4.
+! Extra }, or forgotten $.
+l.11   }
+        ,
+? 
+! Undefined control sequence.
+l.18     "import json\n
+                       ",
+? 
+! Undefined control sequence.
+l.19 .../.local/config/mysql_config.json') as f:\n
+                                                  ",
+? 
+! Undefined control sequence.
+l.29     "import os\n
+                     ",
+? 
+! Undefined control sequence.
+l.30 ...'.format(data['user'], data['password'])\n
+                                                  ",
+? 
+! You can't use `macro parameter character #' in math mode.
+l.38     "#
+           # Show the databases"
+? 
+! You can't use `macro parameter character #' in math mode.
+l.38     "##
+             Show the databases"
+? 
+! Undefined control sequence.
+l.50       "5 rows affected.\n
+                              "
+? 
+! Undefined control sequence.
+l.56        "<table>\n
+                      ",
+? 
+! Undefined control sequence.
+l.57        "    <tr>\n
+                       ",
+? 
+! Undefined control sequence.
+l.58        "        <th>Database</th>\n
+                                        ",
+? 
+! Undefined control sequence.
+l.59        "    </tr>\n
+                        ",
+? 
+! Undefined control sequence.
+l.60        "    <tr>\n
+                       ",
+? 
+! Undefined control sequence.
+l.61        "        <td>information_schema</td>\n
+                                                  ",
+? 
+! Undefined control sequence.
+l.62        "    </tr>\n
+                        ",
+? 
+! Undefined control sequence.
+l.63        "    <tr>\n
+                       ",
+? 
+! Undefined control sequence.
+l.64        "        <td>mysql</td>\n
+                                     ",
+? 
+! Undefined control sequence.
+l.65        "    </tr>\n
+                        ",
+? 
+! Undefined control sequence.
+l.66        "    <tr>\n
+                       ",
+? 
+! Undefined control sequence.
+l.67        "        <td>performance_schema</td>\n
+                                                  ",
+? 
+! Undefined control sequence.
+l.68        "    </tr>\n
+                        ",
+? 
+! Undefined control sequence.
+l.69        "    <tr>\n
+                       ",
+? 
+! Undefined control sequence.
+l.70        "        <td>students</td>\n
+                                        ",
+? 
+! Undefined control sequence.
+l.71        "    </tr>\n
+                        ",
+? 
+! Undefined control sequence.
+l.72        "    <tr>\n
+                       ",
+? 
+! Undefined control sequence.
+l.73        "        <td>sys</td>\n
+                                   ",
+? 
+! Undefined control sequence.
+l.74        "    </tr>\n
+                        ",
+? 
+! Undefined control sequence.
+l.78        "[('information_schema',),\n
+                                        ",
+? 
+! Undefined control sequence.
+l.79        " ('mysql',),\n
+                           ",
+? 
+! Undefined control sequence.
+l.80        " ('performance_schema',),\n
+                                        ",
+? 
+! Undefined control sequence.
+l.81        " ('students',),\n
+                              ",
+? 
+! You can't use `macro parameter character #' in math mode.
+l.98     "#
+           # Select a Database"
+? 
