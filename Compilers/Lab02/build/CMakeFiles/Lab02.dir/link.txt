@@ -1,0 +1,1 @@
+/bin/g++  -g  -rdynamic CMakeFiles/Lab02.dir/main.cpp.o CMakeFiles/Lab02.dir/tokens.cpp.o  -o Lab02 
