@@ -1,0 +1,9 @@
+﻿Build started 28-01-2020 10:38:24.
+     1>Project "\\192.168.12.20\ce\CG\hello\hello\hello.vcxproj" on node 2 (Build target(s)).
+     1>Link:
+         hello.vcxproj -> \\192.168.12.20\ce\CG\hello\Debug\hello.exe
+     1>Done Building Project "\\192.168.12.20\ce\CG\hello\hello\hello.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.25

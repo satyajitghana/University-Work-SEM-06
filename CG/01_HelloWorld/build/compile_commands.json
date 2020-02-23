@@ -1,7 +1,0 @@
-[
-{
-  "directory": "/mnt/d/University-Work/University-Work-SEM-06/CG/01_HelloWorld/build",
-  "command": "/usr/bin/g++-9    -g   -o CMakeFiles/HelloWorld.dir/main.cpp.o -c /mnt/d/University-Work/University-Work-SEM-06/CG/01_HelloWorld/main.cpp",
-  "file": "/mnt/d/University-Work/University-Work-SEM-06/CG/01_HelloWorld/main.cpp"
-}
-]

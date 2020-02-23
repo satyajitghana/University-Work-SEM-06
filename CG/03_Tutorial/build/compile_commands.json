@@ -1,7 +1,0 @@
-[
-{
-  "directory": "/mnt/d/University-Work/University-Work-SEM-06/CG/03_Tutorial/build",
-  "command": "/usr/bin/g++-9    -g   -o CMakeFiles/tutorial.dir/main.cpp.o -c /mnt/d/University-Work/University-Work-SEM-06/CG/03_Tutorial/main.cpp",
-  "file": "/mnt/d/University-Work/University-Work-SEM-06/CG/03_Tutorial/main.cpp"
-}
-]
