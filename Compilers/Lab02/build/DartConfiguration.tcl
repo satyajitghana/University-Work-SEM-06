@@ -4,29 +4,39 @@
 
 
 # Configuration directories and files
-SourceDirectory: /mnt/data/University-Work-SEM-06/Compilers/Lab02
-BuildDirectory: /mnt/data/University-Work-SEM-06/Compilers/Lab02/build
+SourceDirectory: /mnt/d/University-Work/University-Work-SEM-06/Compilers/Lab02
+BuildDirectory: /mnt/d/University-Work/University-Work-SEM-06/Compilers/Lab02/build
 
 # Where to place the cost data store
 CostDataFile: 
 
 # Site is something like machine.domain, i.e. pragmatic.crd
-Site: shadowleaf-manjaro
+Site: SHADOWLEAF-ROG
 
 # Build name is osname-revision-compiler, i.e. Linux-2.4.2-2smp-c++
-BuildName: Linux-g++
+BuildName: Linux-g++-9
 
 # Subprojects
 LabelsForSubprojects: 
 
 # Submission information
-SubmitURL: http://
+IsCDash: 
+CDashVersion: 
+QueryCDashVersion: 
+DropSite: 
+DropLocation: 
+DropSiteUser: 
+DropSitePassword: 
+DropSiteMode: 
+DropMethod: http
+TriggerSite: 
+ScpCommand: /usr/bin/scp
 
 # Dashboard start time
 NightlyStartTime: 00:00:00 EDT
 
 # Commands for the build/test/submit cycle
-ConfigureCommand: "/usr/bin/cmake" "/mnt/data/University-Work-SEM-06/Compilers/Lab02"
+ConfigureCommand: "/usr/bin/cmake" "/mnt/d/University-Work/University-Work-SEM-06/Compilers/Lab02"
 MakeCommand: /usr/bin/cmake --build . --config "${CTEST_CONFIGURATION_TYPE}" -- -i
 DefaultCTestConfigurationType: Release
 
@@ -39,7 +49,7 @@ CVSCommand: CVSCOMMAND-NOTFOUND
 CVSUpdateOptions: -d -A -P
 
 # Subversion options
-SVNCommand: /usr/bin/svn
+SVNCommand: SVNCOMMAND-NOTFOUND
 SVNOptions: 
 SVNUpdateOptions: 
 
@@ -62,8 +72,8 @@ UpdateOptions:
 UpdateType: 
 
 # Compiler info
-Compiler: /bin/g++
-CompilerVersion: 9.2.0
+Compiler: /usr/bin/g++-9
+CompilerVersion: 9.2.1
 
 # Dynamic analysis (MemCheck)
 PurifyCommand: 
@@ -71,7 +81,7 @@ ValgrindCommand:
 ValgrindCommandOptions: 
 MemoryCheckType: 
 MemoryCheckSanitizerOptions: 
-MemoryCheckCommand: MEMORYCHECK_COMMAND-NOTFOUND
+MemoryCheckCommand: /usr/bin/valgrind
 MemoryCheckCommandOptions: 
 MemoryCheckSuppressionFile: 
 

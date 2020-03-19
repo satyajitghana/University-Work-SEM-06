@@ -1,9 +1,9 @@
 file(REMOVE_RECURSE
+  "tokens.cpp"
   "CMakeFiles/Lab02.dir/main.cpp.o"
   "CMakeFiles/Lab02.dir/tokens.cpp.o"
-  "Lab02"
   "Lab02.pdb"
-  "tokens.cpp"
+  "Lab02"
 )
 
 # Per-language clean rules from dependency scanning.

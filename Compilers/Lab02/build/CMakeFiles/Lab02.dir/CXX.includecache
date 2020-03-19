@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/mnt/data/University-Work-SEM-06/Compilers/Lab02/build/tokens.cpp
+/mnt/d/University-Work/University-Work-SEM-06/Compilers/Lab02/build/tokens.cpp
 stdio.h
 -
 string.h
@@ -22,7 +22,7 @@ iostream
 unistd.h
 -
 
-/mnt/data/University-Work-SEM-06/Compilers/Lab02/main.cpp
+/mnt/d/University-Work/University-Work-SEM-06/Compilers/Lab02/main.cpp
 iostream
 -
 string
