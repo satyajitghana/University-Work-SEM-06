@@ -1,0 +1,69 @@
+DROP TABLE IF EXISTS STAFF_LOGIN;
+
+CREATE TABLE STAFF_LOGIN
+(
+    id INT(5) PRIMARY KEY,
+    user_name VARCHAR(20),
+    hashed_password CHAR(60)
+);
+
+DROP TABLE IF EXISTS STUDENT_LOGIN;
+
+CREATE TABLE STUDENT_LOGIN
+(
+    id INT(5) PRIMARY KEY,
+    user_name VARCHAR(20),
+    hashed_password CHAR(60)
+);
+
+DROP TABLE IF EXISTS STUDENT;
+
+CREATE TABLE STUDENT
+(
+    reg_no CHAR(12) PRIMARY KEY,
+    name VARCHAR(30) NOT NULL,
+    department ENUM('CSE', 'EEE', 'ECE', 'CIVIL'),
+    course ENUM('B.Tech', 'M.Tech') NOT NULL,
+    contact_no VARCHAR(10)
+);
+
+DROP TABLE IF EXISTS PROJEKT;
+
+CREATE TABLE PROJEKT
+(
+    id INT(5) PRIMARY KEY,
+    project_name VARCHAR(100),
+    mentor_name VARCHAR(30),
+    department ENUM('CSE', 'EEE', 'ECE', 'CIVIL'),
+    category VARCHAR(30)
+);
+
+DROP TABLE IF EXISTS PROJECT_STUDENT_REGISTER;
+
+CREATE TABLE PROJECT_STUDENT_REGISTER
+(
+    project_id INT(5),
+    student_reg_no CHAR(12),
+    FOREIGN KEY(project_id) REFERENCES PROJEKT(id),
+    FOREIGN KEY(student_reg_no) REFERENCES STUDENT(reg_no)
+);
+
+DROP TABLE IF EXISTS EXHIBITION;
+
+CREATE TABLE EXHIBITION
+(
+    room_id INT(5) PRIMARY KEY,
+    room_name CHAR(20),
+    capacity INT(5)
+);
+
+DROP TABLE IF EXISTS PROJECT_EXHIBITION;
+
+CREATE TABLE PROJECT_EXHIBITION
+(
+    room_id INT(5),
+    project_id INT(5),
+    table_no INT(5) CHECK ( table_no > 0 AND table_no < ( SELECT * FROM EXHIBITION WHERE EXHIBITION.room_id = room_id LIMIT 1 ) ),
+    FOREIGN KEY(room_id) REFERENCES EXHIBITION(room_id),
+    FOREIGN KEY(project_id) REFERENCES PROJEKT(id)
+);
