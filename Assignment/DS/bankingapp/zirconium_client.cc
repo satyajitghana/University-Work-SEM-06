@@ -1,7 +1,7 @@
 #include <iostream>
 #include <memory>
-#include <string>
 #include <sstream>
+#include <string>
 // #include <filesystem>
 
 #include <grpcpp/grpcpp.h>
@@ -12,7 +12,6 @@
 #define LOGURU_WITH_STREAMS 1
 
 #include "loguru.hpp"
-
 #include "zirconiumbank.grpc.pb.h"
 
 // gRPC namespaces
@@ -24,6 +23,7 @@ using grpc::Status;
 using zirconium::bank::AuthUser;
 using zirconium::bank::Balance;
 using zirconium::bank::RequestAmount;
+using zirconium::bank::TransferReq;
 using zirconium::bank::WebService;
 
 class ZirconiumClient {
@@ -39,24 +39,29 @@ class ZirconiumClient {
         // The Response we will get
         Balance balance_res;
 
+        // Context for the client. It could be used to convey extra information to
+        // the server and/or tweak certain RPC behaviors.
         ClientContext context;
 
         // The actual RPC
         Status status = stub_->BalanceEnquiry(&context, authuser_req, &balance_res);
 
         return getResponse_(status, user, balance_res);
-
     }
 
-    std::string DepositAmount(const std::string& user, const std::string& pin, int dep_amt) {
-
+    std::string UpdateAmount(const std::string& user, const std::string& pin, int update_amt) {
         // the despoit amount request
-        RequestAmount deposit_amt_req;
+        RequestAmount update_amt_req;
+
+        LOG_IF_S(WARNING, update_amt == 0) << "update amount = 0";
+
+        LOG_IF_S(WARNING, update_amt < 0) << "Debit Req of Amount: " << update_amt;
+        LOG_IF_S(WARNING, update_amt > 0) << "Credit Req of Amount: " << update_amt;
 
         // create the request payload
-        deposit_amt_req.mutable_user()->set_username(user);
-        deposit_amt_req.mutable_user()->set_pin(pin);
-        deposit_amt_req.set_value(dep_amt);
+        update_amt_req.mutable_user()->set_username(user);
+        update_amt_req.mutable_user()->set_pin(pin);
+        update_amt_req.set_value(update_amt);
 
         // The Response we will get
         Balance balance_res;
@@ -64,23 +69,20 @@ class ZirconiumClient {
         ClientContext context;
 
         // The DepositAmount RPC
-        Status status = stub_->DepositAmount(&context, deposit_amt_req, &balance_res);
+        Status status = stub_->UpdateAmount(&context, update_amt_req, &balance_res);
 
         return getResponse_(status, user, balance_res);
-    }
-
-    std::string WithdrawAmount(const std::string& user, const std::string& pin, int with_amt) {
-        // LMAO why did i do this
-        return DepositAmount(user, pin, -with_amt);
     }
 
    private:
     std::unique_ptr<WebService::Stub> stub_;
 
+    ClientContext ctx;
+
     std::string getResponse_(Status status, std::string user, Balance balance_res) {
         if (status.ok()) {
             std::stringstream response;
-            response << "STATUS OK [ user: "  << user <<  ", balance: " << std::to_string(balance_res.value()) << " ]";
+            response << "STATUS OK [ user: " << user << ", balance: " << std::to_string(balance_res.value()) << " ]";
             LOG_S(INFO) << response.str() << "\n";
 
             return response.str();
@@ -102,9 +104,13 @@ int main(int argc, char* argv[]) {
     // turn off the uptime in the output
     loguru::g_preamble_uptime = false;
 
+    // Instantiate the client. It requires a channel, out of which the actual RPCs
+    // are created. This channel models a connection to an endpoint (in this case,
+    // localhost at port 50051). We indicate that the channel isn't authenticated
+    // (use of InsecureChannelCredentials()).
     std::string server_addr("localhost:50051");
     ZirconiumClient zirconium_bank(grpc::CreateChannel(server_addr, grpc::InsecureChannelCredentials()));
-    
+
     try {
         cxxopts::Options options("zirconium_client", "A client for Zirconium Bank");
 
@@ -113,13 +119,7 @@ int main(int argc, char* argv[]) {
             .show_positional_help();
 
         options.allow_unrecognised_options()
-            .add_options()
-            ("username", "username", cxxopts::value<std::string>())
-            ("pin", "PIN", cxxopts::value<std::string>())
-            ("withdraw", "Withdraw a given amount", cxxopts::value<int>()->implicit_value("0"))
-            ("deposit", "Deposit a given amount", cxxopts::value<int>()->implicit_value("0"))
-            ("balance_enquiry", "Balance Enquiry", cxxopts::value<bool>()->implicit_value("true"))
-            ("d,debug", "enable debugging")("h,help", "print help");
+            .add_options()("username", "username", cxxopts::value<std::string>())("pin", "PIN", cxxopts::value<std::string>())("withdraw", "Withdraw a given amount", cxxopts::value<int>()->implicit_value("0"))("deposit", "Deposit a given amount", cxxopts::value<int>()->implicit_value("0"))("balance_enquiry", "Balance Enquiry", cxxopts::value<bool>()->implicit_value("true"))("d,debug", "enable debugging")("h,help", "print help");
 
         auto result = options.parse(argc, argv);
 
@@ -151,19 +151,18 @@ int main(int argc, char* argv[]) {
         if (result.count("deposit")) {
             // the deposit amount
             int dep_amt = result["deposit"].as<int>();
-            std::string reply = zirconium_bank.DepositAmount(username, pin, dep_amt);
+            std::string reply = zirconium_bank.UpdateAmount(username, pin, dep_amt);
         }
 
         if (result.count("withdraw")) {
             // the withdraw amount
             int with_amt = result["withdraw"].as<int>();
-            std::string reply = zirconium_bank.WithdrawAmount(username, pin, with_amt);
+            std::string reply = zirconium_bank.UpdateAmount(username, pin, -with_amt);
         }
 
         if (result["balance_enquiry"].as<bool>()) {
             std::string reply = zirconium_bank.BalanceEnquiry(username, pin);
         }
-
 
     } catch (const cxxopts::OptionException& e) {
         LOG_S(ERROR) << "error parsing options: " << e.what() << "\n";

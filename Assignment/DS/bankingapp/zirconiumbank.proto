@@ -3,10 +3,9 @@ syntax = "proto3";
 // ZirconiumBank (ZrB)
 
 /* The User can requestt for the following from the server
- * 1. Withdraw Amount
- * 2. Desposit Amount
+ * 1. Update Amount
+ * 2. Transfer Amount
  * 3. Balance Enquiry
- * 4. Change Pin // implement this
  * */
 
 /* The Request should always contain
@@ -19,9 +18,15 @@ package zirconium.bank;
 
 // Interface exported by the server
 service WebService {
-    rpc WithdrawAmount(RequestAmount) returns (Balance) {}
-    rpc DepositAmount(RequestAmount) returns (Balance) {}
+    rpc UpdateAmount(RequestAmount) returns (Balance) {}
     rpc BalanceEnquiry(AuthUser) returns (Balance) {}
+    rpc TransferAmount(TransferReq) returns (Balance) {}
+}
+
+message TransferReq {
+    AuthUser from_user = 1;
+    string to_user = 2;
+    int32 amount = 3;
 }
 
 message AuthUser {

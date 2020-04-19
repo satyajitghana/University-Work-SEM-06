@@ -42,6 +42,7 @@ cc_binary(
         "-lmongocxx",
         "-lbsoncxx",
         "-ldl",
+        "-std=c++17",
     ],
     deps = [
         ":cxxopts",

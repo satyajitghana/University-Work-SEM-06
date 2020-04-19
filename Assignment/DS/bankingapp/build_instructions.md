@@ -1,9 +1,11 @@
+# Build Instructions for ZrB
+
 ## install mongo-c driver by
 ```
 wget https://github.com/mongodb/mongo-c-driver/releases/download/1.15.3/mongo-c-driver-1.15.3.tar.gz
 tar xvf mongo-c-driver-1.15.3.tar.gz
 cd mongo-c-driver-1.15.3/
-cd cmake-build
+cd build
 cmake -DENABLE_AUTOMATIC_INIT_AND_CLEANUP=OFF ..
 make -j8 && sudo make install
 ```
@@ -16,15 +18,16 @@ cd mongo-cxx-driver-r3.4.0
 cd build
 cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local
 sudo make EP_mnmlstc_core
-make && sudo make install
+make -j8 && sudo make install
 ```
 
 ## configuring mongodb
 ```
 mkdir /data/db
 sudo chmod -R go+w /data/db
-sudo service mongogb restart
-sudo apt install mongodb mongodb-server
+sudo apt install mongodb mongodb-server -y
+sudo service mongodb restart
+mongod --dbpath /data/db
 ```
 
 For building the mongo test use this ``c++ --std=c++11 test.cpp $(pkg-config --cflags --libs libmongocxx) -Wl,-rpath,/usr/local/lib``
@@ -32,5 +35,16 @@ For building the mongo test use this ``c++ --std=c++11 test.cpp $(pkg-config --c
 You can run using
 ``bazel run //:zirconium_client -- -h```
 the  ``--`` separated the program args from bazel args
+
+Run the server
+```shell
+$ bazel run //:zirconium_server --    
+```
+
+Run the client
+```shell
+$ bazel run //:zirconium_client -- --username=meow --pin=123456 --balance_enquiry 
+$ bazel run //:zirconium_client -- --username=meow --pin=123456 --deposit=10  
+```
 
 > all the best 😂😂
