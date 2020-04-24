@@ -1,14 +1,43 @@
-# BankingApp - A high performance server and client using gRPC and MongoDB
+<div align="center">
+<img src="logo.png" >
+</div>
 
-## Tech Stack
+<h1 align="center">Zirconium Bank 🤑</h1>
 
-- gRPC c++
-- MongoDB 4.2
-- mongocxx driver
-- bsoncxx
-- c++ 17
+# A high performance Server and Client using gRPC and MongoDB
 
-## Toolchains Required
+## Status ⌚
+
+![zrb-build](https://github.com/satyajitghana/ProjektZirconium/workflows/zrb-build/badge.svg?branch=master)
+
+![language-count](https://img.shields.io/github/languages/count/satyajitghana/ProjektZirconium)
+![top-language](https://img.shields.io/github/languages/top/satyajitghana/ProjektZirconium)
+![repo-size](https://img.shields.io/github/repo-size/satyajitghana/ProjektZirconium)
+![loc-count](https://sloc.xyz/github/satyajitghana/ProjektZirconium)
+![license](https://img.shields.io/github/license/satyajitghana/ProjektZirconium)
+![maintainer](https://img.shields.io/badge/maintainer-shadowleaf-blue)
+
+## Tech Stack 🧠
+
+- languages used
+    - c++ 17
+    - skylark
+    - protobuf
+- libraries
+    - mongo-c-driver 1.17.0 beta
+    - mongo-cxx-driver 3.5.0
+    - gsoncxx
+    - cxxopts
+    - loguru
+- build tools
+    - bazel 3.0.0
+    - cmake 3.17.1
+- database
+    - mongodb 4.2
+
+---
+
+## Toolchains Required 🎈
 
 1. Install Bazel
 
@@ -28,9 +57,11 @@ sudo apt update
 sudo apt install cmake -y
 ```
 
-## Build Instructions
+---
 
-1. Install the dependencies
+## Build Instructions 🔨
+
+1. Install the dependencies 🍰
 
 INFO: installs mongo-c-driver, mongo-cxx-driver and mongodb
 
@@ -38,7 +69,7 @@ INFO: installs mongo-c-driver, mongo-cxx-driver and mongodb
 sudo sh install_dependencies.sh
 ```
 
-2. Test your installation
+2. Test your installation 🧪
 
 ```bash
 $ g++ --std=c++11 test.cpp $(pkg-config --cflags --libs libmongocxx) -Wl,-rpath,/usr/local/lib
@@ -51,7 +82,9 @@ $ ./a.out
 sudo sh build.sh
 ```
 
-## Running
+---
+
+## Running 🎯
 
 1. create a replica set in mongo
 
@@ -75,3 +108,7 @@ $ bazel run //server:zirconium_server --
 ```shell
 $ bazel run //:zirconium_client -- --username=meow --pin=123456 --deposit=10
 ```
+
+----
+
+<h3 align="center">Made with 💘 by shadowleaf</h3>
