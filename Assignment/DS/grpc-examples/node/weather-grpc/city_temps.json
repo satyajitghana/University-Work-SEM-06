@@ -1,0 +1,47 @@
+[
+    {
+        "timestamp": "2020-04-27T23:02:31.125Z",
+        "city": "bangalore",
+        "temp": 27.8
+    },
+    {
+        "timestamp": "2020-04-27T23:02:32.125Z",
+        "city": "bangalore",
+        "temp": 28.8
+    },
+    {
+        "timestamp": "2020-04-27T23:02:33.125Z",
+        "city": "bangalore",
+        "temp": 27.6
+    },
+    {
+        "timestamp": "2020-04-27T23:02:34.125Z",
+        "city": "bangalore",
+        "temp": 27.5
+    },
+    {
+        "timestamp": "2020-04-27T23:02:35.125Z",
+        "city": "bangalore",
+        "temp": 27.9
+    },
+    {
+        "timestamp": "2020-04-27T23:02:36.125Z",
+        "city": "bangalore",
+        "temp": 28.0
+    },
+    {
+        "timestamp": "2020-04-27T23:02:37.125Z",
+        "city": "bangalore",
+        "temp": 28.2
+    },
+    {
+        "timestamp": "2020-04-27T23:02:38.125Z",
+        "city": "bangalore",
+        "temp": 28.0
+    },
+    {
+        "timestamp": "2020-04-27T23:02:39.125Z",
+        "city": "bangalore",
+        "temp": 27.9
+    }
+]

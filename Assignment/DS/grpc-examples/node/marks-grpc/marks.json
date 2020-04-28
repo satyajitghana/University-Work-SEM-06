@@ -1,0 +1,32 @@
+{
+    "satyajit": {
+        "DS": 56,
+        "DBMS": 12,
+        "Compilers": 100,
+        "Graphics": 80
+    },
+    "shubham": {
+        "DS": 90,
+        "DBMS": 82,
+        "Compilers": 78,
+        "Graphics": 99
+    },
+    "samhitha": {
+        "DS": 69,
+        "DBMS": 69,
+        "Compilers": 69,
+        "Graphics": 69
+    },
+    "shikhar": {
+        "DS": 89,
+        "DBMS": 88,
+        "Compilers": 94,
+        "Graphics": 92
+    },
+    "shobhan": {
+        "DS": 88,
+        "DBMS": 89,
+        "Compilers": 86,
+        "Graphics": 90
+    }
+}

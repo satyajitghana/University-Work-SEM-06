@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package weather;
+
+service Weather {
+  rpc GetWeather (CityRequest) returns (stream WeatherReply) {}
+}
+
+// The request message containing the city name
+message CityRequest {
+  string city_name = 1;
+}
+
+// The stream of reply containing the weather data
+message WeatherReply {
+  string timestamp = 1;
+  string city = 2;
+  string temp = 3;
+  string weather_status = 4;
+}
